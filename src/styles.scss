@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
+.lowSalary{
+    color: red;
+}
+.highSalary{
+    color: green;
+}
+.normalSalary{
+    color: black;
+}
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

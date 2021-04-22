@@ -1,21 +1,18 @@
 import { Employee, EmployeeService } from '../employee.service';
-import { ElementRef } from '@angular/core';
+import { ElementRef, Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 declare const $
 
 @Component({
-  selector: 'employee-modal',
-  templateUrl: './employee-modal.component.html',
-  styleUrls: ['./employee-modal.component.scss']
+  selector: 'employee-modal-delete',
+  templateUrl: './employee-modal-delete.component.html',
+  styleUrls: ['./employee-modal-delete.component.scss']
 })
-export class EmployeeModalComponent implements OnInit {
+export class EmployeeModalDeleteComponent implements OnInit {
 
-  employee: Employee = {
-    name: '',
-    salary: 0,
-    bonus: 0
-  }
+  @Input()
+  employee: Employee
 
   constructor(private element: ElementRef, private employeeService: EmployeeService) { }
 
@@ -36,18 +33,10 @@ export class EmployeeModalComponent implements OnInit {
     return this.element.nativeElement.firstChild;
   }
 
-  addEmployee(): void{
-    this.employeeService.addEmployee(this.employee)
-    this.resetEmployee()
+  removeEmployee(): void{
+    console.log(this.employee)
+    this.employeeService.removeEmployee(this.employee)
     this.hide()
-  }
-
-  private resetEmployee(){
-    this.employee = {
-      name: '',
-      salary: 0,
-      bonus: 0
-    }
   }
 
 }

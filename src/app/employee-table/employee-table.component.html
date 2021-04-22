@@ -1,31 +1,32 @@
 <div class="container">
+  <div class="row">
+    <h1>Nossos Empregados</h1>
     <table class="table">
-        <thead>
-          <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr>
-          <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-          </tr>
-          <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="btn btn-primary" (click)="showModalAdd()">Adicionar Funcionário</button>
+      <thead>
+        <tr>
+          <td colspan="3"><button class="btn btn-primary" (click)="showModalAdd()">Adicionar Funcionário</button></td>
+        </tr>
+        <tr>
+          <th>Nome</th>
+          <th>Salário</th>
+          <th>Bônus</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeService.employees">
+          <td>{{employee.name}}</td>
+          <td [salary]="employee.salary">{{employee.salary | reais}}</td>
+          <td>{{employee.bonus | reais}}</td>
+          <td>
+            <a>Editar</a>
+            <a href="javascript:void(0)" (click)="showModalRemove(employee)">Deletar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-  <employee-modal></employee-modal>
+<employee-modal></employee-modal>
+<employee-modal-delete [employee]="employeeToDelete"></employee-modal-delete>

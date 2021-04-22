@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-interface Employee{
+export interface Employee{
   name: string;
   salary: number;
   bonus: number;
@@ -11,7 +11,20 @@ interface Employee{
 })
 export class EmployeeService {
 
-  employees: Employee[];
+  employees: Employee[] = [];
 
   constructor() { }
+
+  addEmployee(employee: Employee){
+    console.log(employee)
+    if(employee.name !== ''){
+      employee.bonus = employee.salary > 1000 ? 0 : employee.bonus 
+      this.employees.push(employee)
+    }
+  }
+  removeEmployee(employee: Employee){
+    this.employees = this.employees.filter(item => item !== employee)
+  }
+
+  
 }
