@@ -1,5 +1,6 @@
 import { Employee, EmployeeService } from '../employee.service';
-import { ElementRef, Input } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { ElementRef, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 declare const $
@@ -13,6 +14,9 @@ export class EmployeeModalDeleteComponent implements OnInit {
 
   @Input()
   employee: Employee
+
+  @Output()
+  onRemove: EventEmitter<Employee> = new EventEmitter<Employee>();
 
   constructor(private element: ElementRef, private employeeService: EmployeeService) { }
 
@@ -34,8 +38,8 @@ export class EmployeeModalDeleteComponent implements OnInit {
   }
 
   removeEmployee(): void{
-    console.log(this.employee)
     this.employeeService.removeEmployee(this.employee)
+    this.onRemove.emit(this.employee)
     this.hide()
   }
 

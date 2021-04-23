@@ -3,6 +3,7 @@ import { EmployeeService, Employee } from '../employee.service';
 import {
     EmployeeModalDeleteComponent
 } from '../employee-modal-delete/employee-modal-delete.component';
+import { EmployeeModalEditComponent } from '../employee-modal-edit/employee-modal-edit.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -18,7 +19,16 @@ export class EmployeeTableComponent implements OnInit {
   @ViewChild(EmployeeModalDeleteComponent)
   employeeModalDelete: EmployeeModalDeleteComponent
 
+  @ViewChild(EmployeeModalEditComponent)
+  employeeModalEdit: EmployeeModalEditComponent
+
   employeeToDelete: Employee
+
+  employeeToEdit: Employee
+
+  messageAlert: String
+
+  showAlert: Boolean = false
 
   constructor(public employeeService: EmployeeService) { }
 
@@ -31,13 +41,32 @@ export class EmployeeTableComponent implements OnInit {
 
   showModalRemove(employee: Employee): void{
     this.employeeToDelete = employee
-    console.log(employee)
-    console.log(this.employeeToDelete)
     this.employeeModalDelete.show()
   }
 
-  removeEmployee(){
+  showModalEdit(employee: Employee): void{
+    this.employeeToEdit = employee
+    this.employeeModalEdit.show()
+  }
+
+  removeEmployee(): void{
     this.employeeModalDelete.show()
+  }
+
+  modalAddSubmit(employee: Employee):void{
+    this.showAlert = true
+    this.messageAlert = `O empregado ${employee.name} foi adicionado com sucesso!`
+  }
+
+  modalEditSubmit(employee: Employee):void{
+    this.showAlert = true
+    this.messageAlert = `O empregado ${employee.name} foi editado com sucesso!`
+    console.log(this.messageAlert)
+  }
+
+  onRemoveHandler(employee: Employee):void{
+    this.showAlert = true;
+    this.messageAlert = `O empregado ${employee.name} foi deletado com sucesso!`
   }
 
 }

@@ -16,7 +16,6 @@ export class EmployeeService {
   constructor() { }
 
   addEmployee(employee: Employee){
-    console.log(employee)
     if(employee.name !== ''){
       employee.bonus = employee.salary > 1000 ? 0 : employee.bonus 
       this.employees.push(employee)
