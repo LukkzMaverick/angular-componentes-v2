@@ -8,6 +8,8 @@ import { EmployeeModalComponent } from './employee-modal/employee-modal.componen
 import { SalaryDirective } from './salary.directive';
 import { ReaisPipe } from './reais.pipe';
 import { EmployeeModalDeleteComponent } from './employee-modal-delete/employee-modal-delete.component';
+import { EmployeeModalEditComponent } from './employee-modal-edit/employee-modal-edit.component';
+import { AlertSuccessComponent } from './alert-success/alert-success.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { EmployeeModalDeleteComponent } from './employee-modal-delete/employee-m
     EmployeeModalComponent,
     SalaryDirective,
     ReaisPipe,
-    EmployeeModalDeleteComponent
+    EmployeeModalDeleteComponent,
+    EmployeeModalEditComponent,
+    AlertSuccessComponent
   ],
   imports: [
     BrowserModule,

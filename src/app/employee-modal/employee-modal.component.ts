@@ -1,4 +1,5 @@
 import { Employee, EmployeeService } from '../employee.service';
+import { EventEmitter, Output } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,6 +11,9 @@ declare const $
   styleUrls: ['./employee-modal.component.scss']
 })
 export class EmployeeModalComponent implements OnInit {
+
+  @Output()
+  onSubmit: EventEmitter<Employee> = new EventEmitter()
 
   employee: Employee = {
     name: '',
@@ -38,6 +42,7 @@ export class EmployeeModalComponent implements OnInit {
 
   addEmployee(): void{
     this.employeeService.addEmployee(this.employee)
+    this.onSubmit.emit(this.employee)
     this.resetEmployee()
     this.hide()
   }

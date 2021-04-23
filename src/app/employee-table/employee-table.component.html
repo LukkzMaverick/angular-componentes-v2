@@ -1,3 +1,4 @@
+<alert-success [hidden]="!showAlert"><div class="container">{{messageAlert}}</div></alert-success>
 <div class="container">
   <div class="row">
     <h1>Nossos Empregados</h1>
@@ -19,7 +20,7 @@
           <td [salary]="employee.salary">{{employee.salary | reais}}</td>
           <td>{{employee.bonus | reais}}</td>
           <td>
-            <a>Editar</a>
+            <a class="mr-3" href="javascript:void(0)" (click)="showModalEdit(employee)">Editar</a>
             <a href="javascript:void(0)" (click)="showModalRemove(employee)">Deletar</a>
           </td>
         </tr>
@@ -28,5 +29,6 @@
   </div>
 </div>
 
-<employee-modal></employee-modal>
-<employee-modal-delete [employee]="employeeToDelete"></employee-modal-delete>
+<employee-modal (onSubmit)="modalAddSubmit($event)"></employee-modal>
+<employee-modal-delete (onRemove)="onRemoveHandler($event)" [employee]="employeeToDelete"></employee-modal-delete>
+<employee-modal-edit (onSubmit)="modalEditSubmit($event)" [employee]="employeeToEdit"></employee-modal-edit>
