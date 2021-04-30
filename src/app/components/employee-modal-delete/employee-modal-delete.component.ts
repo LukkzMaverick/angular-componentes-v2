@@ -1,4 +1,4 @@
-import { Employee, EmployeeService } from '../employee.service';
+import { Employee, EmployeeService } from '../../services/employee.service';
 import { EventEmitter } from '@angular/core';
 import { ElementRef, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';

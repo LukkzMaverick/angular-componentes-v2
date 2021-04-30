@@ -1,5 +1,5 @@
 import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
-import { EmployeeService, Employee } from '../employee.service';
+import { Employee, EmployeeService } from '../../services/employee.service';
 import {
     EmployeeModalDeleteComponent
 } from '../employee-modal-delete/employee-modal-delete.component';
