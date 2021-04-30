@@ -10,6 +10,7 @@ import { ReaisPipe } from './pipes/reais.pipe';
 import { EmployeeModalDeleteComponent } from './components/employee-modal-delete/employee-modal-delete.component';
 import { EmployeeModalEditComponent } from './components/employee-modal-edit/employee-modal-edit.component';
 import { AlertSuccessComponent } from './components/alert-success/alert-success.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AlertSuccessComponent } from './components/alert-success/alert-success.
     ReaisPipe,
     EmployeeModalDeleteComponent,
     EmployeeModalEditComponent,
-    AlertSuccessComponent
+    AlertSuccessComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

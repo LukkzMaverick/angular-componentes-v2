@@ -29,6 +29,6 @@
   </div>
 </div>
 
-<employee-modal (onSubmit)="modalAddSubmit($event)"></employee-modal>
+<employee-modal (onHide)="print()" (onSubmit)="modalAddSubmit($event)"></employee-modal>
 <employee-modal-delete (onRemove)="onRemoveHandler($event)" [employee]="employeeToDelete"></employee-modal-delete>
 <employee-modal-edit (onSubmit)="modalEditSubmit($event)" [employee]="employeeToEdit"></employee-modal-edit>

@@ -36,7 +36,7 @@ export class EmployeeTableComponent implements OnInit {
   }
 
   showModalAdd(): void {
-    this.employeeModalAdd.show();
+    this.employeeModalAdd.modal.show();
   }
 
   showModalRemove(employee: Employee): void{
@@ -56,6 +56,10 @@ export class EmployeeTableComponent implements OnInit {
   modalAddSubmit(employee: Employee):void{
     this.showAlert = true
     this.messageAlert = `O empregado ${employee.name} foi adicionado com sucesso!`
+  }
+
+  print(){
+    console.log('escondeu')
   }
 
   modalEditSubmit(employee: Employee):void{
