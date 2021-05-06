@@ -1,30 +1,21 @@
-<div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Novo Empregado</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div *ngIf="employeeEditing" class="modal-body">
-                <div class="form-group">
-                    <label>Nome</label>
-                    <input name="name" class="form-control" type="text" [(ngModel)]="employeeEditing.name">
-                </div>
-                <div class="form-group">
-                    <label>Salário</label>
-                    <input name="salary" class="form-control" type="number" [(ngModel)]="employeeEditing.salary">
-                </div>
-                <div [hidden]="employee?.salary > 1000" class="form-group">
-                    <label>Bônus</label>
-                    <input name="bonus" class="form-control" type="number" [(ngModel)]="employeeEditing.bonus">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="handleCloseModal()" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" (click)="editEmployee()">Editar</button>
-            </div>
+<modal>
+    <h5 modal-title>Novo Empregado</h5>
+    <div modal-body>
+        <div class="form-group">
+            <label>Nome</label>
+            <input name="name" class="form-control" type="text" [(ngModel)]="employeeEditing.name">
+        </div>
+        <div class="form-group">
+            <label>Salário</label>
+            <input name="salary" class="form-control" type="number" [(ngModel)]="employeeEditing.salary">
+        </div>
+        <div [hidden]="employee?.salary > 1000" class="form-group">
+            <label>Bônus</label>
+            <input name="bonus" class="form-control" type="number" [(ngModel)]="employeeEditing.bonus">
         </div>
     </div>
-</div>
+    <div modal-footer>
+        <button type="button" class="btn btn-secondary" (click)="handleCloseModal()" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="editEmployee()">Editar</button>
+    </div>
+</modal>

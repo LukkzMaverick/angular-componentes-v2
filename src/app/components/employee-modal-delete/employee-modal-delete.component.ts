@@ -1,4 +1,5 @@
 import { Employee, EmployeeService } from '../../services/employee.service';
+import { Modalable } from '../modal/modalable';
 import { EventEmitter } from '@angular/core';
 import { ElementRef, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ declare const $
   templateUrl: './employee-modal-delete.component.html',
   styleUrls: ['./employee-modal-delete.component.scss']
 })
-export class EmployeeModalDeleteComponent implements OnInit {
+export class EmployeeModalDeleteComponent extends Modalable implements OnInit {
 
   @Input()
   employee: Employee
@@ -18,23 +19,12 @@ export class EmployeeModalDeleteComponent implements OnInit {
   @Output()
   onRemove: EventEmitter<Employee> = new EventEmitter<Employee>();
 
-  constructor(private element: ElementRef, private employeeService: EmployeeService) { }
+  constructor( private employeeService: EmployeeService) { 
+    super()
+  }
 
   ngOnInit(): void {
-  }
-
-  show(): void {
-    const divModal = this.getDivModal()
-    $(divModal).modal('show')
-  }
-
-  hide() {
-    const divModal = this.getDivModal()
-    $(divModal).modal('hide')
-  }
-
-  getDivModal(): HTMLElement {
-    return this.element.nativeElement.firstChild;
+    super.ngOnInit()
   }
 
   removeEmployee(): void{

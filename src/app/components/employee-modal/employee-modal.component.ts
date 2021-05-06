@@ -23,7 +23,7 @@ export class EmployeeModalComponent extends Modalable implements OnInit {
     bonus: 0
   }
 
-  constructor(private element: ElementRef, private employeeService: EmployeeService) { 
+  constructor(private employeeService: EmployeeService) { 
     super()
   }
 
@@ -33,7 +33,9 @@ export class EmployeeModalComponent extends Modalable implements OnInit {
 
   addEmployee(): void{
     this.employeeService.addEmployee(this.employee)
-    this.onSubmit.emit(this.employee)
+    if(this.employee.name){
+      this.onSubmit.emit(this.employee)
+    }
     this.resetEmployee()
     this.hide()
   }
